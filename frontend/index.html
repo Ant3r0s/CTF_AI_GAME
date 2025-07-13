@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF_AI_TERMINAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <div id="about-us-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h2>Nuestra Historia: Más Allá del Horizonte</h2>
+            <p>Fundada en 2015 sobre los pilares de la innovación y la audacia, MEGACORP nació con un único propósito: catalizar la siguiente fase de la existencia humana. Dejamos atrás los límites de la computación tradicional para abrazar un futuro donde la eficiencia y el potencial no son meras aspiraciones, sino realidades programables.</p>
+            <hr>
+            <h2>Proyecto Prometeo: Desbloqueando el Siguiente Nivel</h2>
+            <p>Nuestro proyecto más ambicioso, "Prometeo", es la culminación de una década de investigación en biotecnología y sinergia neuronal. No se trata de un producto, sino de una <strong>evolución</strong>. "Prometeo" es una plataforma de integración biológica diseñada para <strong>optimizar el rendimiento humano y eliminar las limitaciones biológicas</strong> que nos han frenado durante milenios. Imagina un mundo sin enfermedades, sin fatiga, sin debilidades... una fuerza laboral perfectamente sincronizada y productiva. Esa es la promesa de Prometeo: la sinergia perfecta entre hombre y máquina. El siguiente paso.</p>
+        </div>
+    </div>
+
+    <div id="corporate-intro-screen" class="screen">
+        <nav class="corp-nav">
+            <div class="corp-nav-logo">MEGACORP</div>
+            <ul>
+                <li>Soluciones</li>
+                <li id="about-us-link">Sobre Nosotros</li>
+                <li>Carrera</li>
+                <li>Contacto</li>
+            </ul>
+        </nav>
+        <div class="corporate-content">
+            <img src="img/logo.png" alt="MegaCorp Logo" class="logo">
+            <h1>Forjando las realidades del mañana.</h1>
+            <p>Nuestra sinergia disruptiva redefine los paradigmas de la computación cuántica.</p>
+        </div>
+        <div class="marketing-cards">
+            <div class="card"><h3>Innovación</h3><p>Lideramos la vanguardia tecnológica.</p></div>
+            <div class="card"><h3>Seguridad</h3><p>Sus datos, nuestra fortaleza inquebrantable.</p></div>
+            <div class="card"><h3>Futuro</h3><p>Invierta en el mañana, hoy.</p></div>
+        </div>
+    </div>
+
+    <div id="hacker-intro-screen" class="screen screen-hidden">
+        <div class="hacker-content">
+            <p id="hacker-text"></p>
+            <div id="hack-log" class="hidden"></div>
+            <div id="decision-buttons" class="hidden">
+                <button id="accept-mission-button" class="accept-button">ACEPTAR MISIÓN</button>
+                <button id="decline-mission-button">NO ACEPTAR</button>
+            </div>
+            <div id="pressure-buttons-container" class="hidden"></div>
+        </div>
+    </div>
+
+    <div id="username-screen" class="screen screen-hidden">
+        <div class="username-container">
+            <h2>IDENTIFÍCATE, AGENTE</h2>
+            <input type="text" id="username-input" placeholder="Introduce tu alias..." maxlength="20" autocomplete="off">
+            <button id="confirm-username-button" class="accept-button">INICIAR MISIÓN</button>
+        </div>
+    </div>
+    
+    <div id="connection-screen" class="screen screen-hidden">
+        <pre id="connection-text"></pre>
+    </div>
+
+    <div id="main-container" class="screen screen-hidden">
+        <div id="terminal">
+            <div id="header">
+                <p>CONEXIÓN SEGURA ESTABLECIDA... BIENVENIDO, <span id="welcome-username">AGENTE</span>.</p>
+                <p>==================================================================</p>
+            </div>
+            <div id="chat-log"></div>
+            <div class="prompt-line">
+                <span class="prompt-user">C:\></span>
+                <input type="text" id="user-input" autocomplete="off">
+            </div>
+        </div>
+        <div id="side-panel">
+            <h2>OBJETIVO ACTUAL</h2>
+            <div id="objective-card">
+                <h3 id="character-name"></h3>
+                <p id="character-title"></p>
+                <p id="objective-text"></p>
+            </div>
+            <h2>TIEMPO RESTANTE</h2>
+            <div id="timer-display">--:--</div>
+            <h2>BLOC DE NOTAS</h2>
+            <textarea id="notepad" placeholder="Anota aquí tus pistas, sospechas, contraseñas..."></textarea>
+        </div>
+    </div>
+
+    <div id="endgame-screen" class="screen screen-hidden">
+        <div class="endgame-content">
+            <div id="download-log-container">
+                <pre id="download-log"></pre>
+            </div>
+            <div id="progress-bar-container" class="hidden">
+                <span id="progress-label">DESCARGANDO...</span>
+                <div class="progress-bar-outline">
+                    <div id="progress-bar-fill"></div>
+                </div>
+                <span id="progress-percentage">0%</span>
+            </div>
+            <div id="zero-final-message" class="hidden">
+                <p id="final-time-display" class="hidden"></p>
+                <p id="final-message-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="boss-fight-screen" class="screen screen-hidden">
+        <div id="threat-bubbles-container"></div>
+        <div class="boss-fight-container">
+            <div id="hud">
+                <div class="hud-item">
+                    <h3>TU SISTEMA</h3>
+                    <div class="health-bar-outline">
+                        <div id="player-hp" class="health-bar"></div>
+                    </div>
+                </div>
+                <div class="hud-item">
+                    <h3>DEFENSAS DE ZERO</h3>
+                    <div class="health-bar-outline">
+                        <div id="zero-hp" class="health-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="boss-log"></div>
+            <div id="boss-commands-container" class="prompt-line">
+                <span class="prompt-user">Comando:></span>
+                <input type="text" id="boss-input" autocomplete="off">
+            </div>
+            <div id="boss-command-list"></div>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="screen screen-hidden">
+        <div class="game-over-content">
+            <h1>GAME OVER</h1>
+            <div class="game-over-buttons">
+                <button id="retry-button">REINTENTAR</button>
+                <button id="exit-button">SALIR</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="stats-screen" class="screen screen-hidden">
+        <div class="stats-content">
+            <h1>MISIÓN CUMPLIDA</h1>
+            <p id="stats-time"></p>
+            <p id="stats-endings"></p>
+            <button id="play-again-button">JUGAR DE NUEVO</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

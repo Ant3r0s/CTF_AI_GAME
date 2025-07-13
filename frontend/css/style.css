@@ -1,0 +1,528 @@
+/* --- ESTILOS GENERALES Y FUENTES --- */
+body, html {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Source Code Pro', monospace;
+    color: #0F0;
+    font-size: 16px;
+}
+
+/* --- CANVAS DE FONDO --- */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* --- CLASES DE PANTALLA Y TRANSICIONES --- */
+.screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+.screen-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- VENTANA MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 30;
+}
+.hidden {
+    display: none !important;
+}
+.modal-content {
+    background: #f4f4f4;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 700px;
+    position: relative;
+    line-height: 1.6;
+}
+.modal-content h2 {
+    color: #0056b3;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5em;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* --- PANTALLA 1: INTRO CORPORATIVA --- */
+#corporate-intro-screen {
+    z-index: 20;
+    background: #f4f4f4;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.corp-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.corp-nav-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.corp-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+.corp-nav ul li {
+    cursor: pointer;
+}
+.corporate-content {
+    padding: 20px;
+}
+.corporate-content .logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.corporate-content h1 {
+    font-size: 3em;
+    font-weight: 300;
+}
+.marketing-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- PANTALLA 2: INTRO HACKER (ZERO) --- */
+#hacker-intro-screen {
+    z-index: 10;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hacker-content {
+    max-width: 800px;
+    border: 1px solid #0F0;
+    padding: 40px;
+    background: rgba(0, 10, 0, 0.8);
+    transition: border-color 0.5s;
+}
+#hacker-text {
+    font-size: 1.2em;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+#decision-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+.accept-button, #decline-mission-button, .pressure-button, #confirm-username-button {
+    background: transparent;
+    border: 2px solid #0F0;
+    color: #0F0;
+    padding: 15px 30px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+#decline-mission-button {
+    border-color: #FF0000;
+    color: #FF0000;
+}
+.accept-button:hover, .pressure-button:hover, #confirm-username-button:hover {
+    background: #0F0;
+    color: #000;
+}
+#decline-mission-button:hover {
+    background: #FF0000;
+    color: #000;
+}
+#hack-log {
+    height: 150px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid red;
+    margin-top: 20px;
+    padding: 10px;
+    overflow-y: scroll;
+    font-size: 0.9em;
+    color: red;
+}
+#hack-log p {
+    margin: 0;
+    line-height: 1.2;
+}
+#pressure-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* --- PANTALLA 3: ELEGIR NOMBRE --- */
+#username-screen {
+    z-index: 8;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.username-container {
+    border: 1px solid #0F0;
+    padding: 40px;
+    background: rgba(0, 10, 0, 0.8);
+    text-align: center;
+}
+.username-container h2 {
+    color: #32CD32;
+    margin-bottom: 20px;
+}
+#username-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #0F0;
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+#username-input:focus {
+    outline: none;
+    border-bottom-color: #FFFF00;
+}
+
+
+/* --- PANTALLA 4: SECUENCIA DE CONEXIÓN --- */
+#connection-screen {
+    z-index: 5;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#connection-text {
+    font-family: 'Source Code Pro', monospace;
+    color: #0F0;
+    font-size: 1.5em;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+/* --- PANTALLA 5: CONTENEDOR PRINCIPAL --- */
+#main-container {
+    display: flex;
+}
+#terminal {
+    flex: 3;
+    padding: 15px;
+    height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+}
+#side-panel {
+    flex: 1;
+    border-left: 2px solid #0F0;
+    padding: 15px;
+    height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+#side-panel h2 {
+    color: #32CD32;
+    text-shadow: 0 0 5px #32CD32;
+    border-bottom: 1px solid #0F0;
+    padding-bottom: 5px;
+}
+#objective-card {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    padding: 15px;
+}
+#header {
+    flex-shrink: 0;
+    border-bottom: 1px solid #0F0;
+    margin-bottom: 10px;
+    color: #32CD32;
+    text-shadow: 0 0 5px #32CD32;
+}
+#welcome-username {
+    color: #FFFF00;
+}
+#chat-log {
+    flex-grow: 1;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+#chat-log p {
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+.user-message { color: #fff; }
+.ai-message { color: #0F0; }
+.system-message { color: #FFFF00; }
+.file-content {
+    color: #00BFFF;
+    border-left: 2px solid #00BFFF;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+.prompt-line {
+    display: flex;
+    align-items: center;
+}
+.prompt-user {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+#user-input {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+    width: 100%;
+    caret-color: #0F0;
+}
+#user-input:focus { outline: none; }
+#user-input {
+    border-right: 2px solid #0F0;
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #0F0; }
+}
+#timer-display {
+    font-size: 2em;
+    color: #32CD32;
+    text-shadow: 0 0 8px #32CD32;
+    text-align: center;
+    background: rgba(0, 255, 0, 0.05);
+    padding: 10px;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+#timer-display.low-time {
+    color: #FF0000;
+    text-shadow: 0 0 8px #FF0000;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* --- BLOC DE NOTAS --- */
+#notepad {
+    flex-grow: 1;
+    background: rgba(255, 255, 0, 0.05);
+    border: 1px solid rgba(255, 255, 0, 0.2);
+    color: #FFFF00;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9em;
+    padding: 10px;
+    resize: none;
+    min-height: 100px;
+}
+#notepad:focus {
+    outline: 1px solid #FFFF00;
+}
+
+/* --- PANTALLA 6: SECUENCIA FINAL --- */
+#endgame-screen {
+    z-index: 50;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0F0;
+    font-family: 'Source Code Pro', monospace;
+}
+.endgame-content {
+    width: 80%;
+    max-width: 900px;
+}
+#download-log-container {
+    font-size: 1.2em;
+    text-align: left;
+    white-space: pre-wrap;
+    border: 1px solid #0F0;
+    background: rgba(0, 255, 0, 0.05);
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+#download-log .extract-text {
+    color: #FF0000;
+    border-left: 2px solid red;
+    padding-left: 10px;
+    margin: 10px 0;
+    display: block;
+}
+#progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.progress-bar-outline {
+    flex-grow: 1;
+    height: 25px;
+    border: 1px solid #0F0;
+    padding: 2px;
+}
+#progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #32CD32;
+    transition: width 0.5s ease-in-out;
+}
+#zero-final-message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    line-height: 1.8;
+    color: #FFFF00;
+    text-shadow: 0 0 8px #FFFF00;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+#final-time-display {
+    color: #32CD32;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+}
+#final-message-text {
+    white-space: pre-wrap;
+}
+
+/* --- PANTALLA 7: BOSS FIGHT (ACTUALIZADA) --- */
+#boss-fight-screen {
+    z-index: 60; background: radial-gradient(circle, #330000 0%, #000000 80%); color: red; display: flex; justify-content: center; align-items: center; font-family: 'Source Code Pro', monospace;
+}
+.boss-fight-container { width: 90%; max-width: 1000px; border: 2px solid red; background: rgba(10, 0, 0, 0.8); padding: 20px; }
+#hud { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 20px; text-transform: uppercase; }
+.health-bar-outline { border: 2px solid red; padding: 2px; height: 30px; }
+.health-bar { background: red; height: 100%; width: 100%; transition: width 0.5s ease-in-out; }
+#boss-log { height: 40vh; border: 1px dashed rgba(255, 0, 0, 0.5); overflow-y: scroll; padding: 10px; margin-bottom: 20px; font-size: 1.1em; }
+#boss-log p { margin: 0 0 10px 0; }
+#boss-commands-container { border-top: 2px solid red; padding-top: 15px; }
+#boss-input { background: transparent; border: none; color: #ff8a8a; font-size: 1.2em; width: 100%; caret-color: red; }
+#boss-input:focus { outline: none; }
+#threat-bubbles-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+.threat-bubble {
+    position: absolute;
+    padding: 10px 15px;
+    background: rgba(10, 0, 0, 0.9);
+    border: 1px solid;
+    max-width: 250px;
+    font-size: 0.9em;
+    animation: fadeInOut 5s forwards;
+}
+.threat-bubble.zero { border-color: red; color: red; }
+.threat-bubble.magnusson { border-color: #00BFFF; color: #00BFFF; }
+@keyframes fadeInOut { 0% { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+
+/* --- PANTALLA 8: GAME OVER --- */
+#game-over-screen { z-index: 70; background: #000; color: #FF0000; display: flex; justify-content: center; align-items: center; text-align: center; }
+.game-over-content h1 { font-size: 8em; text-shadow: 0 0 20px red; animation: flicker 0.1s infinite; }
+.game-over-buttons { margin-top: 40px; display: flex; gap: 30px; justify-content: center; }
+#retry-button, #exit-button, #play-again-button { background: transparent; border: 2px solid; padding: 15px 40px; font-size: 1.5em; cursor: pointer; }
+#retry-button, #exit-button { border-color: red; color: red; }
+#retry-button:hover, #exit-button:hover { background: red; color: #000; }
+
+/* --- PANTALLA 9: ESTADÍSTICAS --- */
+#stats-screen { z-index: 80; background: #000; color: #32CD32; display: flex; justify-content: center; align-items: center; text-align: center; }
+#stats-screen h1 { font-size: 4em; text-shadow: 0 0 10px #32CD32; }
+#stats-time { font-size: 2em; margin: 20px 0; }
+#stats-endings { font-size: 1.5em; color: #FFFF00; }
+#play-again-button { margin-top: 40px; border-color: #32CD32; color: #32CD32; }
+#play-again-button:hover { background: #32CD32; color: #000; }}
+
+
+/* --- ANIMACIONES Y ESTADOS DE ALERTA --- */
+.glitching {
+    animation: glitch 0.8s steps(2, jump-end) infinite;
+}
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0); }
+}
+body.red-alert {
+    animation: screen-shake 0.5s steps(3, jump-end) infinite;
+}
+body.red-alert #hacker-intro-screen .hacker-content {
+    border-color: red;
+}
+@keyframes screen-shake {
+    0% { transform: translate(0); }
+    20% { transform: translate(-10px, 10px) rotate(-1deg); }
+    40% { transform: translate(-10px, -10px) rotate(1deg); }
+    60% { transform: translate(10px, 10px) rotate(0deg); }
+    80% { transform: translate(10px, -10px) rotate(-1deg); }
+    100% { transform: translate(0); }
+}
