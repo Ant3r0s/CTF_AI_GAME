@@ -43,7 +43,7 @@ Sigue estos pasos para lanzar el juego en tu máquina local.
 4.  **Descarga el Modelo de IA:**
     * Este proyecto está diseñado para usar el modelo `Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf`.
     * **Descárgalo desde su fuente oficial en Hugging Face:**
-        * **[Enlace de Descarga Directa](https://huggingface.co/NousResearch/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf?download=true)**
+        * **[Enlace de Descarga Directa](https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/tree/main)**
     * **Importante:** Una vez descargado, coloca el archivo `.gguf` dentro de la carpeta `backend/models/`.
     * *(Nota: El archivo del modelo es grande, unos 5 Gigabytes).*
 
