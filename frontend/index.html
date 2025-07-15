@@ -13,7 +13,7 @@
     <div id="about-us-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <button class="modal-close-button">&times;</button>
-            <h2>Nuestra Historia: Más Allá del Horizonte</h2>
+            <h2>Nuestra Historia: Más allá del Horizonte</h2>
             <p>Fundada en 2015 sobre los pilares de la innovación y la audacia, MEGACORP nació con un único propósito: catalizar la siguiente fase de la existencia humana. Dejamos atrás los límites de la computación tradicional para abrazar un futuro donde la eficiencia y el potencial no son meras aspiraciones, sino realidades programables.</p>
             <hr>
             <h2>Proyecto Prometeo: Desbloqueando el Siguiente Nivel</h2>
@@ -21,18 +21,48 @@
         </div>
     </div>
 
+    <div id="solutions-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h2>Nuestras Soluciones: Arquitectura del Futuro</h2>
+            <p>En MEGACORP, no vendemos productos; ofrecemos ecosistemas de progreso. Nuestras soluciones cuánticas y de IA predictiva se integran de forma nativa para crear sinergias sin precedentes. Desde la optimización de la cadena de suministro hasta la computación bio-integrada, diseñamos los pilares sobre los que se construirá el mañana.</p>
+            <hr>
+            <p><strong>QuantumLeap™:</strong> Nuestra plataforma de computación cuántica como servicio (QCaaS), que ofrece una potencia de cálculo antes inalcanzable para resolver los problemas más complejos de la humanidad.</p>
+        </div>
+    </div>
+
+    <div id="career-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h2>Tu Futuro en MEGACORP</h2>
+            <p>Buscamos a los disruptores, a los visionarios, a aquellos que no ven límites, sino oportunidades. En MEGACORP, no tendrás un trabajo; tendrás una misión. Ofrecemos un entorno de crecimiento exponencial, donde tu talento será el catalizador del cambio global.</p>
+            <p>Si estás listo para dejar tu huella en la historia, explora nuestras vacantes. El futuro no espera a nadie.</p>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h2>Contacta con la Vanguardia</h2>
+            <p>Nuestras puertas (virtuales y físicas) están abiertas para aquellos que comparten nuestra visión.</p>
+            <p><strong>Sede Central:</strong> Torre MEGACORP, Neo-Kyoto, Sector 7.</p>
+            <p><strong>Email:</strong> synergy@megacorp.future</p>
+            <p><em>(Por motivos de seguridad, todas las comunicaciones son monitorizadas por nuestra IA de protocolo, IRIS.)</em></p>
+        </div>
+    </div>
+
     <div id="corporate-intro-screen" class="screen">
         <nav class="corp-nav">
             <div class="corp-nav-logo">MEGACORP</div>
             <ul>
-                <li>Soluciones</li>
+                <li id="solutions-link">Soluciones</li>
                 <li id="about-us-link">Sobre Nosotros</li>
-                <li>Carrera</li>
-                <li>Contacto</li>
+                <li id="career-link">Carrera</li>
+                <li id="contact-link">Contacto</li>
             </ul>
         </nav>
         <div class="corporate-content">
-            <img src="img/logo.png" alt="MegaCorp Logo" class="logo">
+            <img src="img/logo.png" alt="MegaCorp Logo" class="logo" id="megacorp-logo">
             <h1>Forjando las realidades del mañana.</h1>
             <p>Nuestra sinergia disruptiva redefine los paradigmas de la computación cuántica.</p>
         </div>
@@ -52,6 +82,23 @@
                 <button id="decline-mission-button">NO ACEPTAR</button>
             </div>
             <div id="pressure-buttons-container" class="hidden"></div>
+        </div>
+    </div>
+
+    <div id="zero-plea-screen" class="screen screen-hidden">
+        <div class="hacker-content">
+            <p id="zero-plea-text"></p>
+            <div id="zero-plea-buttons" class="hidden">
+                <button id="ayudar-zero-button" class="accept-button">AYUDAR A ZERO</button>
+                <button id="no-ayudar-button" class="decline-button">NO AYUDAR</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="iris-challenge-screen" class="screen screen-hidden">
+        <div class="hacker-content anaglyph-text">
+            <p id="iris-challenge-text"></p>
+            <div id="iris-buttons-container" class="hidden"></div>
         </div>
     </div>
 
@@ -93,6 +140,26 @@
         </div>
     </div>
 
+    <div id="iris-interaction-screen" class="screen screen-hidden">
+        <div class="iris-container">
+            <div id="iris-header">
+                <p>> PROTOCOLO DE VERIFICACIÓN SINTÉTICA INICIADO...</p>
+                <p>> OBJETIVO LOCALIZADO: <span id="iris-welcome-username">AGENTE</span></p>
+                <p>==================================================================</p>
+            </div>
+            <div id="iris-intro-dialogue" class="hidden">
+                <p id="iris-second-intro-text"></p>
+            </div>
+            <div id="iris-chat-container" class="hidden">
+                <div id="iris-chat-log"></div>
+                <div class="prompt-line">
+                    <span class="prompt-iris">IRIS:></span>
+                    <input type="text" id="iris-user-input" autocomplete="off" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="endgame-screen" class="screen screen-hidden">
         <div class="endgame-content">
             <div id="download-log-container">
@@ -112,39 +179,92 @@
         </div>
     </div>
 
-    <div id="boss-fight-screen" class="screen screen-hidden">
+    <div id="prometheus-fight-screen" class="screen screen-hidden boss-fight-screen">
         <div id="threat-bubbles-container"></div>
         <div class="boss-fight-container">
             <div id="hud">
                 <div class="hud-item">
-                    <h3>TU SISTEMA</h3>
+                    <h3>TU SISTEMA (HP)</h3>
                     <div class="health-bar-outline">
                         <div id="player-hp" class="health-bar"></div>
                     </div>
                 </div>
                 <div class="hud-item">
-                    <h3>DEFENSAS DE ZERO</h3>
+                    <h3>INTEGRIDAD</h3>
                     <div class="health-bar-outline">
-                        <div id="zero-hp" class="health-bar"></div>
+                        <div id="player-integrity" class="integrity-bar"></div>
+                    </div>
+                </div>
+                <div class="hud-item">
+                    <h3>NÚCLEO PROMETEO</h3>
+                    <div class="health-bar-outline">
+                        <div id="prometheus-hp" class="health-bar prometheus"></div>
                     </div>
                 </div>
             </div>
             <div id="boss-log"></div>
             <div id="boss-commands-container" class="prompt-line">
                 <span class="prompt-user">Comando:></span>
-                <input type="text" id="boss-input" autocomplete="off">
+                <input type="text" id="boss-input" class="boss-input-style" autocomplete="off">
             </div>
             <div id="boss-command-list"></div>
         </div>
     </div>
 
+    <div id="zero-fight-screen" class="screen screen-hidden boss-fight-screen">
+        <div id="threat-bubbles-container"></div>
+        <div class="boss-fight-container">
+            <div id="hud">
+                <div class="hud-item">
+                    <h3>TU SISTEMA (HP)</h3>
+                    <div class="health-bar-outline">
+                        <div id="player-hp-zero" class="health-bar"></div>
+                    </div>
+                </div>
+                <div class="hud-item">
+                    <h3>ZERO (HP)</h3>
+                    <div class="health-bar-outline">
+                        <div id="zero-hp" class="health-bar enemy"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="zero-boss-log" class="boss-log-style"></div>
+            <div id="zero-commands-container" class="prompt-line">
+                <span class="prompt-user">Comando:></span>
+                <input type="text" id="zero-boss-input" class="boss-input-style" autocomplete="off">
+            </div>
+            <div id="zero-command-list" class="boss-command-list-style"></div>
+        </div>
+    </div>
+    
+    <!-- MODIFIED: Estructura de la pantalla de Game Over -->
     <div id="game-over-screen" class="screen screen-hidden">
         <div class="game-over-content">
             <h1>GAME OVER</h1>
             <div class="game-over-buttons">
-                <button id="retry-button">REINTENTAR</button>
-                <button id="exit-button">SALIR</button>
+                <button id="main-retry-button">REINTENTAR</button> <!-- Botón principal de reintento -->
+                <button id="quit-game-button">RENDIRSE</button> <!-- Botón para salir del juego -->
             </div>
+            <!-- Opciones específicas de reintento, ocultas por defecto -->
+            <div id="retry-options" class="hidden"> 
+                <button id="retry-boss-button">REINTENTAR PELEA</button>
+                <button id="restart-full-game-button">REINICIAR JUEGO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Pantalla para el diálogo final de Prometeo -->
+    <div id="prometheus-final-dialogue-screen" class="screen screen-hidden">
+        <div class="final-dialogue-content">
+            <p id="final-dialogue-text"></p>
+            <button id="final-dialogue-continue-button" class="accept-button hidden">CONTINUAR</button>
+        </div>
+    </div>
+    
+    <div id="alert-screen" class="screen screen-hidden">
+        <div class="alert-content">
+            <h1 id="alert-text">ALERTA</h1>
+            <p id="alert-subtext"></p>
         </div>
     </div>
     
@@ -157,6 +277,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>
