@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+bin/
+include/
+lib/
+lib64/
+*.egg-info/
+.installed.cfg
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.env # Para variables de entorno
+
+# Modelos LLM
+*.gguf
+models/ # Si toda la carpeta de modelos es grande, la puedes ignorar
