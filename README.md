@@ -47,12 +47,8 @@ Sigue estos pasos para lanzar el juego en tu máquina local.
     * **Importante:** Una vez descargado, coloca el archivo `.gguf` dentro de la carpeta `backend/models/`.
     * *(Nota: El archivo del modelo es grande, unos 5 Gigabytes).*
 
-5.  **Configura las Contraseñas:**
-    * Dentro de la carpeta `backend/`, encontrarás un archivo llamado `secrets.example.json`.
-    * **Haz una copia** de este archivo en la misma carpeta y **renombra la copia a `secrets.json`**.
-    * ¡Listo! El juego usará estas contraseñas para funcionar.
 
-6.  **Lanza el Servidor:**
+5.  **Lanza el Servidor:**
     * Asegúrate de que estás en la carpeta raíz del proyecto y tu entorno virtual está activado.
     * Ejecuta el servidor:
         ```bash
@@ -60,7 +56,7 @@ Sigue estos pasos para lanzar el juego en tu máquina local.
         ```
     * Espera a que la terminal te confirme que el modelo se ha cargado y el servidor está corriendo en `http://127.0.0.1:5000`.
 
-7.  **¡A Jugar!**
+6.  **¡A Jugar!**
     * Abre tu navegador web y ve a:
         [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
