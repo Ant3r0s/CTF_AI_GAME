@@ -4,7 +4,7 @@ Un thriller de hacking conversacional donde tu única arma es la ingeniería soc
 
 ## Características Principales
 
-* **IA Avanzada:** 5 personajes únicos con personalidades complejas gestionadas por el modelo Llama 3.1. Cada partida es diferente.
+* **IA Avanzada:** 10 personajes únicos con personalidades complejas gestionadas por el modelo Llama 3.1. Cada partida es diferente.
 * **Múltiples Finales:** Tus decisiones en la conversación final importan. ¿Serás leal a tu contacto o te unirás al enemigo? Incluye una batalla final épica contra un jefe.
 * **Mecánicas de Hacking:** No es solo hablar. Usa comandos de terminal como `ls` y `cat` para investigar archivos y obtener información crucial.
 * **Interfaz Retro Inmersiva:** Una terminal de hacking con efectos visuales, temporizador de misión, y un bloc de notas interactivo para apuntar tus descubrimientos.
@@ -40,6 +40,9 @@ Sigue estos pasos para lanzar el juego en tu máquina local.
         pip install -r requirements.txt
         ```
 
+     * Mete app.py, characters.json y llm_handler.py en una carpets llamada backend.
+       
+     
 4.  **Descarga el Modelo de IA:**
     * Este proyecto está diseñado para usar el modelo `Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf`.
     * **Descárgalo desde su fuente oficial en Hugging Face:**
