@@ -40,7 +40,7 @@ Sigue estos pasos para lanzar el juego en tu máquina local.
         pip install -r requirements.txt
         ```
 
-     * Mete app.py, characters.json y llm_handler.py en una carpets llamada backend.
+     * Mete app.py, characters.json y llm_handler.py en una carpeta llamada backend.
        
      
 4.  **Descarga el Modelo de IA:**
